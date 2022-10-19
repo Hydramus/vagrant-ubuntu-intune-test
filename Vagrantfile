@@ -1,6 +1,6 @@
 Vagrant.configure('2') do |config|
   config.vm.box = 'generic/ubuntu2204'
-
+  config.vm.hostname = "ubuntu-intune-test"
   config.vm.define 'ubuntu_msintune' do |_ubuntu_msintune|
     config.vm.synced_folder '.', '/vagrant', automount: true
 
@@ -14,10 +14,7 @@ Vagrant.configure('2') do |config|
       vb.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
       vb.gui = true
 
-      args = []
-      config.vm.provision 'ubuntu_etc shell script', type: 'shell',
-                                                     path: 'scripts/ubuntu_etc.sh',
-                                                     args: args
+    config.vm.provision "shell", path: 'scripts/ubuntu_config.sh'
     end
   end
 end
