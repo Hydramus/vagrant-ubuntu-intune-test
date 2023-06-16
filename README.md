@@ -1,13 +1,10 @@
 # Ubuntu Test Device for Microsoft Intune Enrollment
 
-## Using Vagrant to spin up new ubuntu 22 LTS with a GUI for you to test with.
-Creating a test device to test enrollment for ubuntu into the new intune set up (https://learn.microsoft.com/en-us/mem/intune/user-help/enroll-device-linux)
-
 This project sets up a virtual Ubuntu desktop environment using Vagrant, provisioned with necessary tools and applications for testing the enrollment into Microsoft Intune. The virtual machine is configured to use VirtualBox as a provider.
 
 The provisioning script installs Ubuntu desktop, VirtualBox guest utilities, Google Chrome, Microsoft Edge, Visual Studio Code, Microsoft Intune App, Microsoft Defender Endpoint, and Node.js. The script also configures the timezone and adds the default vagrant user to the admin group.
 
-The project is intended to work on Windows, macOS, and Linux (and WSL).
+The project is intended to work on Windows, macOS, Linux, and within Windows Subsystem for Linux (WSL).
 
 ## Prerequisites
 
@@ -28,12 +25,14 @@ The project is intended to work on Windows, macOS, and Linux (and WSL).
     vagrant up
     ```
 
-3. SSH into the VM once it is up and running.
+3. The GUI should automatically pop up. If not, open VirtualBox and start the VM manually.
+
+4. SSH into the VM once it is up and running, if needed.
     ```sh
     vagrant ssh
     ```
 
-4. When finished, you can suspend the virtual machine by running:
+5. When finished, you can suspend the virtual machine by running:
     ```sh
     vagrant suspend
     ```
@@ -42,6 +41,15 @@ The project is intended to work on Windows, macOS, and Linux (and WSL).
     ```sh
     vagrant destroy
     ```
+
+## Accessing the GUI
+
+This Vagrant setup is configured to automatically display the graphical user interface (GUI) of the Ubuntu desktop environment when the VM starts. If the GUI does not automatically appear, follow these steps:
+
+1. Open the VirtualBox application on your host machine.
+2. Locate the VM named 'Ubuntu Desktop and Microsoft Intune app' in the list of virtual machines.
+3. Right-click on the VM and select "Start" and then "Normal Start".
+4. The GUI should now appear in a new window.
 
 ## Directory Structure
 
